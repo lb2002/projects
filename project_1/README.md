@@ -1,0 +1,1 @@
+This folder contains everything regarding our first project

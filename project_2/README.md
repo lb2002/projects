@@ -1,0 +1,1 @@
+This folder contains everything regarding the second project
