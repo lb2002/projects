@@ -1,5 +1,4 @@
 data/
-submission.csv
 __pycache__/
 .ipynb_checkpoints/
 grading_tests/github_workdir/
