@@ -10,7 +10,7 @@ Put `x_train.csv`, `y_train.csv` and `x_test.csv` from AIcrowd into `data/`, the
 python run.py
 ```
 
-This trains the final model and writes `submission.csv`. The first run parses the csv files (about 2 minutes) and stores them as `data/cache.npz`, later runs take under a minute.
+This trains the final model and writes `submissions/submission.csv` (about 12 minutes). The first run also parses the csv files (about 2 minutes) and stores them as `data/cache.npz`. `python run.py name lr` trains only the logistic regression, which takes under a minute. `submissions/v4_blend.csv` is the file we submitted to AIcrowd.
 
 To reproduce the cross validation numbers (takes about 1.5 hours, writes `results.csv`):
 
@@ -40,7 +40,7 @@ pytest --github_link .. .
 
 Preprocessing is in `preprocessing.py`. The BRFSS codes for "don't know" / "refused" (7/9, 77/99, 777/999) become nan and "none" (88, 888) becomes 0. Ids, dates, sampling weights and raw questions that have a calculated counterpart are dropped. Columns with at most 10 distinct values are one-hot encoded with nan as its own category, the rest gets the median for nan and is standardized (train statistics only) and clipped to [-5, 5].
 
-The final model is regularized logistic regression (lambda 1e-5) on all columns, trained with Newton's method because gradient descent was still far from converged after 1000 steps. Only 8.8% of the labels are positive, so the decision threshold is chosen to maximize F1 on the training data.
+The base model is regularized logistic regression (lambda 1e-5) on all columns, trained with Newton's method because gradient descent was still far from converged after 1000 steps. The final submission averages its scores with three small numpy MLPs (`mlp.py`, seeds 0-2). Only 8.8% of the labels are positive, so the decision threshold is chosen to maximize F1 on the training data.
 
 Cross validation is 5-fold with seed 1, the threshold is tuned on the training folds.
 
