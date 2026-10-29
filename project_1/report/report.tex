@@ -126,7 +126,7 @@ A limitation is that we chose the positive rate for the blend after seeing the f
 
 \section{Summary}
 
-For predicting heart disease from BRFSS, the biggest improvements came from cleaning the answer codes, one-hot encoding with a missing category, keeping all columns and tuning the decision threshold for F1. A blend of a logistic regression and small networks gave a small further gain. The code is at \url{https://github.com/lb2002/projects} (folder \texttt{project\_1}). Running \texttt{python run.py v4\_blend} in this folder with the data in \texttt{data/} writes the submitted file (about 12 minutes), and \texttt{cross\_validation.py} produces Table~\ref{tab:cv}.
+For predicting heart disease from BRFSS, the biggest improvements came from cleaning the answer codes, one-hot encoding with a missing category, keeping all columns and tuning the decision threshold for F1. A blend of a logistic regression and small networks gave a small further gain. The code is at \url{https://github.com/lb2002/projects/tree/submission}. Running \texttt{python run.py} with the data in \texttt{data/} writes the submitted predictions to \texttt{submissions/submission.csv} (about 12 minutes), and \texttt{cross\_validation.py} produces Table~\ref{tab:cv}.
 
 \bibliographystyle{IEEEtran}
 \bibliography{literature}
